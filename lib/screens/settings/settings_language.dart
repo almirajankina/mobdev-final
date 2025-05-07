@@ -26,18 +26,17 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Select Language')),
       body: ListView(
-        children:
-            languages.map((lang) {
-              return RadioListTile<String>(
-                title: Text(lang),
-                value: lang,
-                groupValue: selected,
-                onChanged: (value) {
-                  setState(() => selected = value);
-                  Navigator.pop(context, value);
-                },
-              );
-            }).toList(),
+        children: languages.map((lang) {
+          return RadioListTile<String>(
+            title: Text(lang),
+            value: lang,
+            groupValue: selected,
+            onChanged: (value) {
+              setState(() => selected = value);
+              Navigator.pop(context, value);
+            },
+          );
+        }).toList(),
       ),
     );
   }

@@ -1,20 +1,21 @@
-
 import 'package:flutter/material.dart';
 import '../product/product_full_screen.dart';
 
 class SearchResultsScreen extends StatelessWidget {
-  final String query;
-  const SearchResultsScreen({super.key, required this.query});
+  const SearchResultsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final products = _getFilteredProducts(query);
+    final args = ModalRoute.of(context)!.settings.arguments as Map;
+    final String query = args['query'] ?? '';
+    final List<Map<String, String>> products =
+        List<Map<String, String>>.from(args['products'] ?? []);
 
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          _buildHeader(context),
+          _buildHeader(context, query),
           const SizedBox(height: 8),
           _buildProductGrid(context, products),
         ],
@@ -23,12 +24,13 @@ class SearchResultsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context, String query) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       child: Row(
         children: [
-          const Text("Shop", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
+          const Text("Shop",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
           const SizedBox(width: 12),
           Expanded(
             child: Container(
@@ -40,9 +42,12 @@ class SearchResultsScreen extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Expanded(child: Text(query, style: const TextStyle(color: Colors.black54))),
+                  Expanded(
+                      child: Text(query,
+                          style: const TextStyle(color: Colors.black54))),
                   IconButton(
-                    icon: const Icon(Icons.close, size: 16, color: Colors.black54),
+                    icon: const Icon(Icons.close,
+                        size: 16, color: Colors.black54),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
@@ -52,13 +57,17 @@ class SearchResultsScreen extends StatelessWidget {
           const SizedBox(width: 12),
           const Icon(Icons.camera_alt_outlined, color: Colors.blue),
           const SizedBox(width: 12),
-          const Icon(Icons.tune, color: Colors.blue),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, '/filter'),
+            child: const Icon(Icons.tune, color: Colors.blue),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildProductGrid(BuildContext context, List<Map<String, String>> products) {
+  Widget _buildProductGrid(
+      BuildContext context, List<Map<String, String>> products) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: GridView.count(
@@ -71,39 +80,36 @@ class SearchResultsScreen extends StatelessWidget {
         children: products.map((product) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => const ProductFullScreen()));
+              Navigator.pushNamed(
+                context,
+                '/productFull',
+                arguments: {
+                  'image': product['img'],
+                  'price': product['price']!.replaceAll('\$', ''),
+                  'title': product['title'],
+                  'description': 'Lorem ipsum dolor sit amet',
+                },
+              );
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(product['img']!, height: 140, width: double.infinity, fit: BoxFit.cover),
+                  child: Image.network(product['img']!,
+                      height: 140, width: double.infinity, fit: BoxFit.cover),
                 ),
                 const SizedBox(height: 4),
-                const Text("Lorem ipsum dolor sit amet", style: TextStyle(fontSize: 12)),
+                Text(product['title']!, style: const TextStyle(fontSize: 12)),
                 const SizedBox(height: 2),
-                Text(product['price']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(product['price']!,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
               ],
             ),
           );
         }).toList(),
       ),
     );
-  }
-
-  List<Map<String, String>> _getFilteredProducts(String query) {
-    final allProducts = [
-      {'img': 'assets/images/flash_sale_3.png', 'price': '\$17,00', 'category': 'Socks'},
-      {'img': 'assets/images/flash_sale_1.png', 'price': '\$17,00', 'category': 'Clothing'},
-      {'img': 'assets/images/profile_most_popular_2.png', 'price': '\$17,00', 'category': 'Clothing'},
-      {'img': 'assets/images/flash_sale_2.png', 'price': '\$17,00', 'category': 'Socks'},
-      {'img': 'assets/images/flash_sale_4.png', 'price': '\$17,00', 'category': 'Skirt'},
-      {'img': 'assets/images/profile_most_popular_1.png', 'price': '\$17,00', 'category': 'Accessories'},
-    ];
-
-    return allProducts.where((product) =>
-      product['category']!.toLowerCase().contains(query.toLowerCase())).toList();
   }
 
   Widget _buildBottomNavBar() {
@@ -115,7 +121,8 @@ class SearchResultsScreen extends StatelessWidget {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
       ],
     );

@@ -1,76 +1,106 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../cart/cart_data.dart';
+import '/services/favorites_service.dart';
 
 class ProductFullScreen extends StatelessWidget {
   const ProductFullScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args == null || args is! Map) {
+      return const Scaffold(
+        body: Center(child: Text("Product data is missing")),
+      );
+    }
+
+    final Map<String, dynamic> product = (args as Map).cast<String, dynamic>();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: BackButton(color: Colors.black),
-        title: const Text(
-          "Product Details",
-          style: TextStyle(color: Colors.black),
-        ),
+        leading: const BackButton(color: Colors.black),
+        title: const Text("Product Details",
+            style: TextStyle(color: Colors.black)),
         centerTitle: true,
       ),
       body: Stack(
         children: [
           ListView(
             children: [
-              _buildImageHeader(),
-              _buildProductInfo(),
+              _buildImageHeader(context, product),
+              _buildProductInfo(product),
               _buildVariations(context),
               _buildSpecifications(context),
               _buildDeliveryOptions(),
               _buildRatingReviews(context),
               _buildMostPopular(context),
               _buildYouMightLike(),
-              const SizedBox(height: 80),
+              const SizedBox(height: 100),
             ],
           ),
-          _buildBottomButtons(),
+          _buildBottomButtons(context, product),
         ],
       ),
     );
   }
 
-  Widget _buildImageHeader() {
+  Widget _buildImageHeader(BuildContext context, Map<String, dynamic> product) {
+    final favoritesService = Provider.of<FavoritesService>(context);
+
     return Stack(
       children: [
-        Image.asset(
-          'assets/images/flash_sale_6.png',
+        Image.network(
+          product['image'],
           width: double.infinity,
           height: 300,
           fit: BoxFit.cover,
         ),
-        const Positioned(
+        Positioned(
           top: 40,
           right: 16,
-          child: Icon(Icons.favorite_border, color: Colors.white),
+          child: IconButton(
+            icon: Icon(
+              favoritesService.isFavorite(product)
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              favoritesService.toggleFavorite(product);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(favoritesService.isFavorite(product)
+                      ? "Added to favorites"
+                      : "Removed from favorites"),
+                  duration: const Duration(seconds: 1),
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildProductInfo() {
+  Widget _buildProductInfo(Map product) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text(
-            "\$17,00",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 8),
-          Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam arcu mauris, scelerisque eu mauris id, pretium pulvinar sapien.",
-            style: TextStyle(color: Colors.black54, fontSize: 14),
-          ),
+        children: [
+          Text("\$${product['price']}",
+              style:
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          Text(product['title'] ?? '',
+              style: const TextStyle(color: Colors.black87, fontSize: 16)),
+          const SizedBox(height: 8),
+          Text(product['description'] ?? '',
+              style: const TextStyle(color: Colors.black54, fontSize: 14)),
         ],
       ),
     );
@@ -87,10 +117,8 @@ class ProductFullScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Variations",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+          const Text("Variations",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(height: 8),
           Row(
             children: [
@@ -103,11 +131,8 @@ class ProductFullScreen extends StatelessWidget {
                 child: const CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.blue,
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 16,
-                  ),
+                  child:
+                      Icon(Icons.arrow_forward, color: Colors.white, size: 16),
                 ),
               ),
             ],
@@ -143,10 +168,8 @@ class ProductFullScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Specifications",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+          const Text("Specifications",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(height: 12),
           _buildSpecRow("Material", "Cotton 95%   Nylon 5%"),
           _buildSpecRow("Origin", "EU"),
@@ -159,11 +182,8 @@ class ProductFullScreen extends StatelessWidget {
                 child: const CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.blue,
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 16,
-                  ),
+                  child:
+                      Icon(Icons.arrow_forward, color: Colors.white, size: 16),
                 ),
               ),
             ],
@@ -181,11 +201,8 @@ class ProductFullScreen extends StatelessWidget {
           Text(title, style: const TextStyle(fontSize: 16)),
           const SizedBox(width: 16),
           Expanded(
-            child: Text(
-              subtitle,
-              style: const TextStyle(color: Colors.black54),
-            ),
-          ),
+              child: Text(subtitle,
+                  style: const TextStyle(color: Colors.black54))),
         ],
       ),
     );
@@ -197,14 +214,12 @@ class ProductFullScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Delivery",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+          const Text("Delivery",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(height: 8),
-          _buildDeliveryRow("Standard", "5-7 days", "\$3,00"),
+          _buildDeliveryRow("Standard", "5-7 days", "\$3.00"),
           const SizedBox(height: 8),
-          _buildDeliveryRow("Express", "1-2 days", "\$12,00"),
+          _buildDeliveryRow("Express", "1-2 days", "\$12.00"),
         ],
       ),
     );
@@ -234,10 +249,8 @@ class ProductFullScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Rating & Reviews",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+          const Text("Rating & Reviews",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(height: 8),
           Row(
             children: const [
@@ -247,36 +260,28 @@ class ProductFullScreen extends StatelessWidget {
               Icon(Icons.star, color: Colors.amber),
               Icon(Icons.star_border, color: Colors.amber),
               SizedBox(width: 8),
-              Text(
-                "4/5",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Text("4/5",
+                  style: TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.bold)),
             ],
           ),
           const SizedBox(height: 12),
           Row(
             children: [
               const CircleAvatar(
-                backgroundImage: AssetImage(
-                  'assets/images/profile_most_popular_1.png',
-                ),
+                backgroundImage:
+                    AssetImage('assets/images/profile_most_popular_1.png'),
               ),
               const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
-                  Text(
-                    "Veronika",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
+                  Text("Veronika",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                   SizedBox(height: 4),
                   Text(
-                    "Lorem ipsum dolor sit amet, consectetur sadipscing elitr.",
-                    style: TextStyle(color: Colors.black54, fontSize: 12),
-                  ),
+                      "Lorem ipsum dolor sit amet, consectetur sadipscing elitr.",
+                      style: TextStyle(color: Colors.black54, fontSize: 12)),
                 ],
               ),
             ],
@@ -309,20 +314,15 @@ class ProductFullScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                "Most Popular",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
+              const Text("Most Popular",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/productSale'),
                 child: const CircleAvatar(
                   radius: 16,
                   backgroundColor: Colors.blue,
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 16,
-                  ),
+                  child:
+                      Icon(Icons.arrow_forward, color: Colors.white, size: 16),
                 ),
               ),
             ],
@@ -337,12 +337,8 @@ class ProductFullScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    items[index],
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Image.asset(items[index],
+                      width: 100, height: 100, fit: BoxFit.cover),
                 );
               },
             ),
@@ -364,10 +360,8 @@ class ProductFullScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "You Might Like",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
+          const Text("You Might Like",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const SizedBox(height: 8),
           GridView.builder(
             shrinkWrap: true,
@@ -391,7 +385,10 @@ class ProductFullScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomButtons() {
+  Widget _buildBottomButtons(
+      BuildContext context, Map<String, dynamic> product) {
+    final favoritesService = Provider.of<FavoritesService>(context);
+
     return Positioned(
       bottom: 0,
       left: 0,
@@ -401,11 +398,34 @@ class ProductFullScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Row(
           children: [
-            const Icon(Icons.favorite_border, color: Colors.black),
+            IconButton(
+              icon: Icon(
+                favoritesService.isFavorite(product)
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                favoritesService.toggleFavorite(product);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(favoritesService.isFavorite(product)
+                        ? "Added to favorites"
+                        : "Removed from favorites"),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
+              },
+            ),
             const SizedBox(width: 8),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  addToCart(product);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("Added to cart")),
+                  );
+                },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                 child: const Text("Add to cart"),
               ),
@@ -413,7 +433,10 @@ class ProductFullScreen extends StatelessWidget {
             const SizedBox(width: 8),
             Expanded(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  addToCart(product);
+                  Navigator.pushNamed(context, '/cart');
+                },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                 child: const Text("Buy now"),
               ),

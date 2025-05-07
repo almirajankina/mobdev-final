@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../search/search_results_screen.dart';
+import 'package:http/http.dart' as http;
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -46,14 +47,45 @@ class _SearchScreenState extends State<SearchScreen> {
     });
   }
 
-  void _submitSearch(String query) {
+  Future<List<Map<String, String>>> fetchSearchResults(String query) async {
+    final url = Uri.parse('https://fakestoreapi.com/products');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+
+      final filtered = data
+          .where((item) => item['title']
+              .toString()
+              .toLowerCase()
+              .contains(query.toLowerCase()))
+          .map<Map<String, String>>((item) => {
+                'img': item['image'],
+                'title': item['title'],
+                'price': '\$${item['price'].toString()}',
+              })
+          .toList();
+
+      return filtered;
+    } else {
+      throw Exception('Failed to fetch products');
+    }
+  }
+
+  void _submitSearch(String query) async {
     if (query.trim().isEmpty) return;
+
     _addToSearchHistory(query.trim());
-    Navigator.push(
+
+    final products = await fetchSearchResults(query);
+
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (_) => SearchResultsScreen(query: query.trim()),
-      ),
+      '/searchResults',
+      arguments: {
+        'query': query.trim(),
+        'products': products,
+      },
     );
   }
 
@@ -127,7 +159,8 @@ class _SearchScreenState extends State<SearchScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text("Search history", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            const Text("Search history",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             IconButton(
               icon: const Icon(Icons.delete_outline),
               onPressed: _clearSearchHistory,
@@ -142,7 +175,8 @@ class _SearchScreenState extends State<SearchScreen> {
             return GestureDetector(
               onTap: () => _submitSearch(item),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(20),
@@ -158,13 +192,19 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _buildRecommendationsSection(BuildContext context) {
     final recommendations = [
-      'Skirt', 'Accessories', 'Black T-Shirt', 'Jeans', 'Clothing', 'White Shoes',
+      'Skirt',
+      'Accessories',
+      'Black T-Shirt',
+      'Jeans',
+      'Clothing',
+      'White Shoes',
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Recommendations", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text("Recommendations",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
@@ -173,7 +213,8 @@ class _SearchScreenState extends State<SearchScreen> {
             return GestureDetector(
               onTap: () => _submitSearch(item),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(20),
@@ -197,7 +238,8 @@ class _SearchScreenState extends State<SearchScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Discover", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text("Discover",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 12),
         SizedBox(
           height: 230,
@@ -231,12 +273,14 @@ class _SearchScreenState extends State<SearchScreen> {
                     const SizedBox(height: 8),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
-                      child: Text("Lorem ipsum dolor sit amet", style: TextStyle(fontSize: 12)),
+                      child: Text("Lorem ipsum dolor sit amet",
+                          style: TextStyle(fontSize: 12)),
                     ),
                     const SizedBox(height: 4),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text(item['price']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(item['price']!,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                     ),
                   ],
                 ),
@@ -257,7 +301,8 @@ class _SearchScreenState extends State<SearchScreen> {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
       ],
     );

@@ -14,7 +14,7 @@ class ChatSupport extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Shoppe Support',
-            style: TextStyle(backgroundColor: Colors.white),
+            style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Color(0xFF004CFF),
           elevation: 0,

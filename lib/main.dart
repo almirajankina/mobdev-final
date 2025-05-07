@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:profile_app/screens/authentification/password.dart';
+import 'package:profile_app/screens/product/product_variations_screen.dart';
 import 'screens/main_screen.dart';
+import 'package:provider/provider.dart';
+import 'services/favorites_service.dart';
 import 'screens/shop/shop_screen.dart';
 import 'screens/profile/profile_screen.dart';
 import 'screens/search/search_screen.dart';
@@ -8,6 +11,7 @@ import 'screens/search/search_results_screen.dart';
 import 'screens/flash_sale/flash_sale_live_screen.dart';
 import 'screens/flash_sale/flash_sale_screen.dart';
 import 'screens/wishlist/wishlist_screen.dart';
+import 'screens/wishlist/wishlist_entry_point.dart';
 import 'screens/wishlist/wishlist_empty_screen.dart';
 import 'screens/cart/cart_screen.dart';
 import 'screens/welcome_screen.dart';
@@ -35,14 +39,20 @@ import 'screens/activity/my_activity.dart';
 import 'screens/history/history.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
 bool isCartEmpty = false; // или true для теста
 bool isWishlistEmpty = false; // или true для теста
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FavoritesService()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -61,25 +71,19 @@ class MyApp extends StatelessWidget {
         '/shop': (context) => const ShopScreen(),
         '/profile': (context) => const ProfileScreen(),
         '/search': (context) => const SearchScreen(),
-        '/searchResults': (context) => const SearchResultsScreen(query: 'item'),
+        '/searchResults': (context) => const SearchResultsScreen(),
         '/flashSaleLive': (context) => const FlashSaleLiveScreen(),
         '/flashSale': (context) => const FlashSaleScreen(),
         '/password': (context) => const PasswordScreen(),
-
-        '/wishlist':
-            (context) =>
-                isWishlistEmpty
-                    ? const WishlistEmptyScreen()
-                    : const WishlistScreen(),
-        '/cart':
-            (context) =>
-                isCartEmpty
-                    ? const CartEmptyShownFromWishlistScreen()
-                    : const CartScreen(),
+        '/productVariations': (context) => const ProductVariationsScreen(),
+        '/wishlist': (context) => const WishlistEntryPoint(),
+        '/cart': (context) => isCartEmpty
+            ? const CartEmptyShownFromWishlistScreen()
+            : const CartScreen(),
         '/recentlyViewed': (context) => const RecentlyViewedScreen(),
         '/recentlyViewedDate': (context) => const RecentlyViewedDateScreen(),
-        '/recentlyViewedDateChosen':
-            (context) => const RecentlyViewedDateChosenScreen(),
+        '/recentlyViewedDateChosen': (context) =>
+            const RecentlyViewedDateChosenScreen(),
         '/productSale': (context) => const ProductSaleScreen(),
         '/productFull': (context) => const ProductFullScreen(),
         '/categoriesFilter': (context) => const CategoriesFilterScreen(),
@@ -88,8 +92,8 @@ class MyApp extends StatelessWidget {
         '/addVoucher': (context) => const AddVoucherScreen(),
         '/voucherAdded': (context) => const VoucherAddedScreen(),
         '/choosePayment': (context) => const ChoosePaymentMethodScreen(),
-        '/paymentInProgress':
-            (context) => const PaymentInProgressScreen(isSuccess: true),
+        '/paymentInProgress': (context) =>
+            const PaymentInProgressScreen(isSuccess: true),
         '/paymentFailed': (context) => const CouldntProceedPaymentScreen(),
         '/paymentSuccess': (context) => const SuccessfulPaymentScreen(),
         '/editShipping': (context) => const EditShippingAddressScreen(),
