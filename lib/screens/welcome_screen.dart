@@ -55,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   const Text(
-                    'Beautiful eCommerce UI Kit for your online store',
+                    'Welcome to Shoppe!',
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20, color: Colors.black87),
                   ),

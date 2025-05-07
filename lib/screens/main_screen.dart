@@ -33,11 +33,13 @@ class _MainScreenState extends State<MainScreen> {
     ];
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        selectedItemColor: Color(0xFF004CFF),
+        selectedItemColor: Color.fromARGB(255, 1, 67, 220),
         unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
@@ -58,6 +60,7 @@ class _MainScreenState extends State<MainScreen> {
           );
         },
         backgroundColor: Color(0xFF004CFF),
+        foregroundColor: Colors.white,
         child: const Icon(Icons.chat),
       ),
     );
