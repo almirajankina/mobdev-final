@@ -17,7 +17,8 @@ class RecentlyViewedDateScreen extends StatelessWidget {
                 child: const Icon(Icons.arrow_back_ios_new, size: 20),
               ),
               const SizedBox(width: 12),
-              const Text("Recently viewed", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text("Recently viewed",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ],
           ),
           const SizedBox(height: 20),
@@ -34,7 +35,8 @@ class RecentlyViewedDateScreen extends StatelessWidget {
                   children: const [
                     Icon(Icons.arrow_back_ios_new, size: 16),
                     SizedBox(width: 8),
-                    Text("April", style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text("April",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(width: 8),
                     Icon(Icons.arrow_forward_ios, size: 16),
                   ],
@@ -51,7 +53,8 @@ class RecentlyViewedDateScreen extends StatelessWidget {
                       height: 32,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: day == 18 ? Colors.blue : Colors.transparent,
+                        color:
+                            day == 18 ? Color(0xFF004CFF) : Colors.transparent,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
@@ -100,11 +103,14 @@ class RecentlyViewedDateScreen extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(img, fit: BoxFit.cover, width: double.infinity, height: 150),
+              child: Image.asset(img,
+                  fit: BoxFit.cover, width: double.infinity, height: 150),
             ),
             const SizedBox(height: 4),
-            const Text("Lorem ipsum dolor sit amet", style: TextStyle(fontSize: 12)),
-            const Text("\$17,00", style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text("Lorem ipsum dolor sit amet",
+                style: TextStyle(fontSize: 12)),
+            const Text("\$17,00",
+                style: TextStyle(fontWeight: FontWeight.bold)),
           ],
         );
       }).toList(),
@@ -113,17 +119,17 @@ class RecentlyViewedDateScreen extends StatelessWidget {
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.blue,
+      selectedItemColor: Color(0xFF004CFF),
+      unselectedItemColor: Color(0xFF004CFF),
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
       ],
     );
   }
 }
-

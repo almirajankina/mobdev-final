@@ -67,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xFF004CFF),
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
@@ -75,7 +75,8 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/authorization');
+                        Navigator.pushReplacementNamed(
+                            context, '/authorization');
                       },
                       child: const Text(
                         "Let's get started",
@@ -102,7 +103,7 @@ class WelcomeScreen extends StatelessWidget {
                         SizedBox(width: 6),
                         CircleAvatar(
                           radius: 12,
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Color(0xFF004CFF),
                           child: Icon(
                             Icons.arrow_forward,
                             size: 16,

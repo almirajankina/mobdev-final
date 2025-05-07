@@ -21,11 +21,13 @@ class RecentlyViewedDateChosenScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (_) => const RecentlyViewedDateScreen()),
+              MaterialPageRoute(
+                  builder: (_) => const RecentlyViewedDateScreen()),
             );
           },
         ),
-        title: const Text("Recently Viewed", style: TextStyle(color: Colors.black)),
+        title: const Text("Recently Viewed",
+            style: TextStyle(color: Colors.black)),
         elevation: 0,
       ),
       backgroundColor: Colors.white,
@@ -52,11 +54,14 @@ class RecentlyViewedDateChosenScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(items[index], height: 130, width: double.infinity, fit: BoxFit.cover),
+                    child: Image.asset(items[index],
+                        height: 130, width: double.infinity, fit: BoxFit.cover),
                   ),
                   const SizedBox(height: 4),
-                  const Text("Lorem ipsum dolor sit amet", style: TextStyle(fontSize: 12)),
-                  const Text("\$17,00", style: TextStyle(fontWeight: FontWeight.bold)),
+                  const Text("Lorem ipsum dolor sit amet",
+                      style: TextStyle(fontSize: 12)),
+                  const Text("\$17,00",
+                      style: TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
             );
@@ -64,14 +69,16 @@ class RecentlyViewedDateChosenScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
         ],
       ),

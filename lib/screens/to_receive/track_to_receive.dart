@@ -77,14 +77,13 @@ class TrackOrderScreen extends StatelessWidget {
                       height: 6,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors:
-                              isLastStep && !isFailed
-                                  ? [
-                                    Colors.blue,
-                                    Colors.blue,
-                                    const Color.fromARGB(255, 190, 25, 10),
-                                  ]
-                                  : [Colors.blue, Colors.lightBlueAccent],
+                          colors: isLastStep && !isFailed
+                              ? [
+                                  Color(0xFF004CFF),
+                                  Color(0xFF004CFF),
+                                  const Color.fromARGB(255, 190, 25, 10),
+                                ]
+                              : [Color(0xFF004CFF), Colors.lightBlueAccent],
                           stops:
                               isLastStep && !isFailed ? [0.0, 0.7, 1.0] : null,
                           begin: Alignment.centerLeft,
@@ -104,19 +103,17 @@ class TrackOrderScreen extends StatelessWidget {
                         width: 16,
                         height: 16,
                         decoration: BoxDecoration(
-                          color:
-                              isCompleted
-                                  ? (isLastStep && index == totalSteps - 1
-                                      ? const Color.fromARGB(255, 190, 25, 10)
-                                      : Colors.blue)
-                                  : Colors.white,
+                          color: isCompleted
+                              ? (isLastStep && index == totalSteps - 1
+                                  ? const Color.fromARGB(255, 190, 25, 10)
+                                  : Color(0xFF004CFF))
+                              : Colors.white,
                           border: Border.all(
-                            color:
-                                isCompleted
-                                    ? (isLastStep && index == totalSteps - 1
-                                        ? const Color.fromARGB(255, 190, 25, 10)
-                                        : Colors.blue)
-                                    : Colors.grey,
+                            color: isCompleted
+                                ? (isLastStep && index == totalSteps - 1
+                                    ? const Color.fromARGB(255, 190, 25, 10)
+                                    : Color(0xFF004CFF))
+                                : Colors.grey,
                             width: 2,
                           ),
                           shape: BoxShape.circle,
@@ -215,7 +212,7 @@ class TrackOrderScreen extends StatelessWidget {
                       child: Text(
                         "Attempt to deliver your parcel was not successful",
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Color(0xFF004CFF),
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -259,7 +256,7 @@ class TrackOrderScreen extends StatelessWidget {
           Icon(
             Icons.check_circle,
             size: 20,
-            color: active ? Colors.blue : Colors.grey,
+            color: active ? Color(0xFF004CFF) : Colors.grey,
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -339,7 +336,7 @@ void _showNotificationDialog(BuildContext context) {
           TextButton(
             style: TextButton.styleFrom(
               foregroundColor: Colors.white,
-              backgroundColor: Colors.blue,
+              backgroundColor: Color(0xFF004CFF),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),

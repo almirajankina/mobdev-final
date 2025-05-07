@@ -119,7 +119,7 @@ class OrderHistoryScreen extends StatelessWidget {
                         padding: EdgeInsets.only(left: 4.0),
                         child: Icon(
                           Icons.check_circle,
-                          color: Colors.blue,
+                          color: Color(0xFF004CFF),
                           size: 18,
                         ),
                       ),
@@ -150,10 +150,9 @@ class OrderHistoryScreen extends StatelessWidget {
                         builder: (context) => const ReviewBottomSheet(),
                       );
                     },
-
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.blue,
-                      side: const BorderSide(color: Colors.blue),
+                      foregroundColor: Color(0xFF004CFF),
+                      side: const BorderSide(color: Color(0xFF004CFF)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -266,7 +265,7 @@ class _ReviewBottomSheetState extends State<ReviewBottomSheet> {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -312,7 +311,7 @@ class ThankYouDialog extends StatelessWidget {
               top: -40,
               child: CircleAvatar(
                 radius: 30,
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xFF004CFF),
                 child: const Icon(Icons.check, color: Colors.white, size: 30),
               ),
             ),
@@ -342,7 +341,7 @@ class ThankYouDialog extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),

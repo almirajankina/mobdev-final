@@ -30,14 +30,16 @@ class ReviewsScreen extends StatelessWidget {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
         ],
       ),
@@ -74,7 +76,8 @@ class ReviewsScreen extends StatelessWidget {
                 Row(
                   children: List.generate(
                     5,
-                    (index) => const Icon(Icons.star, color: Colors.amber, size: 16),
+                    (index) =>
+                        const Icon(Icons.star, color: Colors.amber, size: 16),
                   ),
                 ),
                 const SizedBox(height: 8),

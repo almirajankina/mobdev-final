@@ -4,7 +4,8 @@ class ChoosePaymentMethodScreen extends StatefulWidget {
   const ChoosePaymentMethodScreen({super.key});
 
   @override
-  State<ChoosePaymentMethodScreen> createState() => _ChoosePaymentMethodScreenState();
+  State<ChoosePaymentMethodScreen> createState() =>
+      _ChoosePaymentMethodScreenState();
 }
 
 class _ChoosePaymentMethodScreenState extends State<ChoosePaymentMethodScreen> {
@@ -51,7 +52,8 @@ class _ChoosePaymentMethodScreenState extends State<ChoosePaymentMethodScreen> {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemCount: cards.length + 1,
-                  separatorBuilder: (context, index) => const SizedBox(width: 12),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(width: 12),
                   itemBuilder: (context, index) {
                     if (index == cards.length) {
                       return _buildAddCardButton();
@@ -68,11 +70,13 @@ class _ChoosePaymentMethodScreenState extends State<ChoosePaymentMethodScreen> {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xFF004CFF),
                     padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
                   ),
-                  child: const Text("Select", style: TextStyle(color: Colors.white)),
+                  child: const Text("Select",
+                      style: TextStyle(color: Colors.white)),
                 ),
               ),
             ],
@@ -97,22 +101,28 @@ class _ChoosePaymentMethodScreenState extends State<ChoosePaymentMethodScreen> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: isSelected ? Colors.blue : Colors.grey.shade300, width: 2),
+          border: Border.all(
+              color: isSelected ? Color(0xFF004CFF) : Colors.grey.shade300,
+              width: 2),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Text(card['type']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+                Text(card['type']!,
+                    style: const TextStyle(fontWeight: FontWeight.bold)),
                 const Spacer(),
                 if (isSelected)
-                  const Icon(Icons.check_circle, color: Colors.blue, size: 20),
+                  const Icon(Icons.check_circle,
+                      color: Color(0xFF004CFF), size: 20),
               ],
             ),
             const SizedBox(height: 16),
             const Text("•••• •••• ••••", style: TextStyle(fontSize: 16)),
-            Text(card['number']!, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Text(card['number']!,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,7 +146,7 @@ class _ChoosePaymentMethodScreenState extends State<ChoosePaymentMethodScreen> {
       child: Container(
         width: 60,
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: Color(0xFF004CFF),
           borderRadius: BorderRadius.circular(16),
         ),
         child: const Center(

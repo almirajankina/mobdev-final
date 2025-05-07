@@ -44,14 +44,14 @@ class ActiveRewardsTab extends StatelessWidget {
       decoration: BoxDecoration(
         color: isExpiring ? Colors.red[50] : Colors.white,
         border: Border.all(
-          color: isExpiring ? Colors.red : Colors.blue,
+          color: isExpiring ? Colors.red : Color(0xFF004CFF),
           width: 1.5,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         children: [
-          Icon(Icons.card_giftcard, size: 32, color: Colors.blue),
+          Icon(Icons.card_giftcard, size: 32, color: Color(0xFF004CFF)),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -90,7 +90,7 @@ class ActiveRewardsTab extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Color(0xFF004CFF),
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(

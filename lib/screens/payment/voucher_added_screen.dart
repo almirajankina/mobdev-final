@@ -8,7 +8,8 @@ class VoucherAddedScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Payment', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: const Text('Payment',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -30,14 +31,16 @@ class VoucherAddedScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
         ],
       ),
@@ -54,12 +57,13 @@ class VoucherAddedScreen extends StatelessWidget {
       child: Row(
         children: [
           const Expanded(
-            child: Text('26, Duong So 2, Thao Dien Ward, An Phu, District 2,\nHo Chi Minh City',
+            child: Text(
+                '26, Duong So 2, Thao Dien Ward, An Phu, District 2,\nHo Chi Minh City',
                 style: TextStyle(fontSize: 12)),
           ),
           IconButton(
             onPressed: () => Navigator.pushNamed(context, '/editShipping'),
-            icon: const Icon(Icons.edit, color: Colors.blue, size: 20),
+            icon: const Icon(Icons.edit, color: Color(0xFF004CFF), size: 20),
           ),
         ],
       ),
@@ -81,7 +85,7 @@ class VoucherAddedScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {}, // можно позже добавить переход
-            icon: const Icon(Icons.edit, color: Colors.blue, size: 20),
+            icon: const Icon(Icons.edit, color: Color(0xFF004CFF), size: 20),
           ),
         ],
       ),
@@ -94,28 +98,32 @@ class VoucherAddedScreen extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text('Items 2', style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text('Items 2',
+                style: TextStyle(fontWeight: FontWeight.bold)),
             const Spacer(),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: Colors.blue.shade50,
+                color: Color(0xFF004CFF),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(
                 children: const [
-                  Text('5% Discount', style: TextStyle(color: Colors.blue, fontSize: 10)),
+                  Text('5% Discount',
+                      style: TextStyle(color: Color(0xFF004CFF), fontSize: 10)),
                   SizedBox(width: 4),
-                  Icon(Icons.close, size: 12, color: Colors.blue),
+                  Icon(Icons.close, size: 12, color: Color(0xFF004CFF)),
                 ],
               ),
             ),
           ],
         ),
         const SizedBox(height: 12),
-        _buildItemTile('assets/images/profile_most_popular_1.png', 'Lorem ipsum dolor sit amet', '\$17,00'),
+        _buildItemTile('assets/images/profile_most_popular_1.png',
+            'Lorem ipsum dolor sit amet', '\$17,00'),
         const SizedBox(height: 12),
-        _buildItemTile('assets/images/profile_most_popular_2.png', 'Lorem ipsum dolor sit amet', '\$17,00'),
+        _buildItemTile('assets/images/profile_most_popular_2.png',
+            'Lorem ipsum dolor sit amet', '\$17,00'),
       ],
     );
   }
@@ -140,14 +148,16 @@ class VoucherAddedScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Shipping Options', style: TextStyle(fontWeight: FontWeight.bold)),
+        const Text('Shipping Options',
+            style: TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 12),
         Row(
           children: [
             Radio(value: true, groupValue: true, onChanged: (value) {}),
             const Text('Standard 5-7 days', style: TextStyle(fontSize: 12)),
             const Spacer(),
-            const Text('FREE', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+            const Text('FREE',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
           ],
         ),
         Row(
@@ -155,7 +165,8 @@ class VoucherAddedScreen extends StatelessWidget {
             Radio(value: false, groupValue: true, onChanged: (value) {}),
             const Text('Express 1-2 days', style: TextStyle(fontSize: 12)),
             const Spacer(),
-            const Text('\$12.00', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+            const Text('\$12.00',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
           ],
         ),
       ],
@@ -165,11 +176,12 @@ class VoucherAddedScreen extends StatelessWidget {
   Widget _buildPaymentMethod(BuildContext context) {
     return Row(
       children: [
-        const Text('Payment Method', style: TextStyle(fontWeight: FontWeight.bold)),
+        const Text('Payment Method',
+            style: TextStyle(fontWeight: FontWeight.bold)),
         const Spacer(),
         IconButton(
           onPressed: () => Navigator.pushNamed(context, '/choosePayment'),
-          icon: const Icon(Icons.edit, color: Colors.blue, size: 20),
+          icon: const Icon(Icons.edit, color: Color(0xFF004CFF), size: 20),
         ),
       ],
     );
@@ -187,18 +199,19 @@ class VoucherAddedScreen extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         SizedBox(
-        width: double.infinity,
-        child: ElevatedButton(
-        onPressed: () => Navigator.popUntil(context, (route) => route.isFirst),
-        style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.black,
-        padding: const EdgeInsets.symmetric(vertical: 14),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: () =>
+                Navigator.popUntil(context, (route) => route.isFirst),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+            ),
+            child: const Text('Pay', style: TextStyle(color: Colors.white)),
+          ),
         ),
-        child: const Text('Pay', style: TextStyle(color: Colors.white)),
-  ),
-),
-
       ],
     );
   }

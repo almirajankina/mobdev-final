@@ -23,12 +23,13 @@ class ProgressTab extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 16),
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.blue),
+            border: Border.all(color: Color(0xFF004CFF)),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Row(
             children: [
-              Icon(reward['icon'] as IconData, size: 36, color: Colors.blue),
+              Icon(reward['icon'] as IconData,
+                  size: 36, color: Color(0xFF004CFF)),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(

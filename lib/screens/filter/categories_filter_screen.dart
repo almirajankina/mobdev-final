@@ -30,13 +30,17 @@ class CategoriesFilterScreen extends StatelessWidget {
             const SizedBox(height: 16),
             _buildExpandedCategory(context),
             const SizedBox(height: 16),
-            _buildCollapsedCategory('Shoes', 'assets/images/categories_shoes_2.png'),
+            _buildCollapsedCategory(
+                'Shoes', 'assets/images/categories_shoes_2.png'),
             const SizedBox(height: 12),
-            _buildCollapsedCategory('Bags', 'assets/images/categories_bags_1.png'),
+            _buildCollapsedCategory(
+                'Bags', 'assets/images/categories_bags_1.png'),
             const SizedBox(height: 12),
-            _buildCollapsedCategory('Lingerie', 'assets/images/categories_lingerie_2.png'),
+            _buildCollapsedCategory(
+                'Lingerie', 'assets/images/categories_lingerie_2.png'),
             const SizedBox(height: 12),
-            _buildCollapsedCategory('Accessories', 'assets/images/flash_sale_3.png'),
+            _buildCollapsedCategory(
+                'Accessories', 'assets/images/flash_sale_3.png'),
             const SizedBox(height: 12),
             _buildJustForYouCategory(),
           ],
@@ -60,14 +64,14 @@ class CategoriesFilterScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
       decoration: BoxDecoration(
-        color: isSelected ? Colors.blue : Colors.transparent,
+        color: isSelected ? Color(0xFF004CFF) : Colors.transparent,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.blue),
+        border: Border.all(color: Color(0xFF004CFF)),
       ),
       child: Text(
         title,
         style: TextStyle(
-          color: isSelected ? Colors.white : Colors.blue,
+          color: isSelected ? Colors.white : Color(0xFF004CFF),
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -109,7 +113,9 @@ class CategoriesFilterScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Text("Clothing", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                const Text("Clothing",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                 const Spacer(),
                 const Icon(Icons.keyboard_arrow_up),
               ],
@@ -128,7 +134,10 @@ class CategoriesFilterScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ShopClothingScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const ShopClothingScreen()));
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -158,7 +167,8 @@ class CategoriesFilterScreen extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.asset(imgPath, width: 40, height: 40, fit: BoxFit.cover),
+            child:
+                Image.asset(imgPath, width: 40, height: 40, fit: BoxFit.cover),
           ),
           const SizedBox(width: 12),
           Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -188,17 +198,19 @@ class CategoriesFilterScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          const Text("Just for You", style: TextStyle(fontWeight: FontWeight.bold)),
+          const Text("Just for You",
+              style: TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(width: 4),
-          const Icon(Icons.star, color: Colors.blue, size: 18),
+          const Icon(Icons.star, color: Color(0xFF004CFF), size: 18),
           const Spacer(),
           Container(
             padding: const EdgeInsets.all(4),
             decoration: const BoxDecoration(
-              color: Colors.blue,
+              color: Color(0xFF004CFF),
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.arrow_forward, color: Colors.white, size: 16),
+            child:
+                const Icon(Icons.arrow_forward, color: Colors.white, size: 16),
           ),
         ],
       ),

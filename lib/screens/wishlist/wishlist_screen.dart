@@ -42,7 +42,7 @@ class WishlistScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/recentlyViewed'),
                 child: const CircleAvatar(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   radius: 12,
                   child:
                       Icon(Icons.arrow_forward, size: 14, color: Colors.white),
@@ -124,7 +124,7 @@ class WishlistScreen extends StatelessWidget {
                             onPressed:
                                 () {}, // You can add logic to add to cart
                             icon: const Icon(Icons.shopping_bag_outlined,
-                                color: Colors.blue),
+                                color: Color(0xFF004CFF)),
                           ),
                         ],
                       )

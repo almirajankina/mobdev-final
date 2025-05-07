@@ -37,8 +37,8 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
@@ -57,7 +57,7 @@ class _MainScreenState extends State<MainScreen> {
             MaterialPageRoute(builder: (context) => const ChatSupport()),
           );
         },
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF004CFF),
         child: const Icon(Icons.chat),
       ),
     );

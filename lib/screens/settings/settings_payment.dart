@@ -148,7 +148,7 @@ class SettingsAddCardPage extends StatelessWidget {
                       height: 130,
                       width: 50,
                       decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFF004CFF),
                         borderRadius: BorderRadius.circular(16),
                       ),
                       child: const Center(
@@ -181,14 +181,14 @@ class SettingsAddCardPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: isNegative
                                   ? const Color.fromARGB(255, 205, 218, 255)
-                                  : Colors.blue.shade100,
+                                  : Color(0xFF004CFF),
                               shape: BoxShape.circle,
                             ),
                             child: Icon(
                               isNegative ? Icons.shopping_bag : Icons.lock,
                               color: isNegative
                                   ? const Color.fromARGB(255, 54, 98, 244)
-                                  : Colors.blue,
+                                  : Color(0xFF004CFF),
                               size: 20,
                             ),
                           ),
@@ -295,7 +295,7 @@ class CardForm extends StatelessWidget {
               Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
+              backgroundColor: Color(0xFF004CFF),
               minimumSize: const Size.fromHeight(50),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12)),

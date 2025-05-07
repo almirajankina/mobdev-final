@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyActivityPage extends StatelessWidget {
   final List<CategoryData> categories = [
     CategoryData("Clothing", 187, Colors.orange),
-    CategoryData("Shoes", 450, Colors.blue),
+    CategoryData("Shoes", 450, Color(0xFF004CFF)),
     CategoryData("Bags", 312, Colors.green),
     CategoryData("Lingerie", 210, Colors.purple),
   ];
@@ -52,15 +52,14 @@ class MyActivityPage extends StatelessWidget {
           ],
         ),
         actions: const [
-          Icon(Icons.menu, color: Colors.blue),
+          Icon(Icons.menu, color: Color(0xFF004CFF)),
           SizedBox(width: 10),
-          Icon(Icons.discount_outlined, color: Colors.blue),
+          Icon(Icons.discount_outlined, color: Color(0xFF004CFF)),
           SizedBox(width: 10),
-          Icon(Icons.settings, color: Colors.blue),
+          Icon(Icons.settings, color: Color(0xFF004CFF)),
           SizedBox(width: 10),
         ],
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -73,7 +72,7 @@ class MyActivityPage extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue,
+                color: Color(0xFF004CFF),
               ),
             ),
 
@@ -84,7 +83,7 @@ class MyActivityPage extends StatelessWidget {
               children: [
                 // Стрелка слева
                 IconButton(
-                  icon: const Icon(Icons.arrow_left, color: Colors.blue),
+                  icon: const Icon(Icons.arrow_left, color: Color(0xFF004CFF)),
                   onPressed: () {
                     // Логика для перехода к предыдущему месяцу
                   },
@@ -155,7 +154,6 @@ class MyActivityPage extends StatelessWidget {
                                     "Total",
                                     style: TextStyle(fontSize: 18),
                                   ),
-
                                   Text(
                                     totalSpent.toStringAsFixed(0),
                                     style: const TextStyle(
@@ -175,7 +173,7 @@ class MyActivityPage extends StatelessWidget {
 
                 // Стрелка справа
                 IconButton(
-                  icon: const Icon(Icons.arrow_right, color: Colors.blue),
+                  icon: const Icon(Icons.arrow_right, color: Color(0xFF004CFF)),
                   onPressed: () {
                     // Логика для перехода к следующему месяцу
                   },
@@ -190,38 +188,37 @@ class MyActivityPage extends StatelessWidget {
             Wrap(
               spacing: 10,
               runSpacing: 10,
-              children:
-                  categories.map((category) {
-                    return ElevatedButton(
-                      onPressed: () {
-                        // Действие при нажатии на кнопку
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: category.color,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 23,
-                          vertical: 11,
-                        ),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        minimumSize: Size(
-                          0,
-                          0,
-                        ), // уменьшает вертикальное растяжение
-                      ),
-                      child: Text(
-                        "${category.name} \$${category.amount.toStringAsFixed(0)}",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                    );
-                  }).toList(),
+              children: categories.map((category) {
+                return ElevatedButton(
+                  onPressed: () {
+                    // Действие при нажатии на кнопку
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: category.color,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 23,
+                      vertical: 11,
+                    ),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    minimumSize: Size(
+                      0,
+                      0,
+                    ), // уменьшает вертикальное растяжение
+                  ),
+                  child: Text(
+                    "${category.name} \$${category.amount.toStringAsFixed(0)}",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
 
             const SizedBox(height: 24),
@@ -242,7 +239,7 @@ class MyActivityPage extends StatelessWidget {
                 Navigator.pushNamed(context, '/orderHistory');
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xFF004CFF),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 120,
                   vertical: 15,
@@ -284,7 +281,7 @@ class MyActivityPage extends StatelessWidget {
               width: 45,
               height: 45,
               decoration: const BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xFF004CFF),
                 shape: BoxShape.circle,
               ),
               child: Center(

@@ -24,7 +24,9 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
         elevation: 0,
         title: Row(
           children: [
-            const Text("Cart", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+            const Text("Cart",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black)),
             const SizedBox(width: 6),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -32,7 +34,8 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
                 color: Colors.grey.shade200,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Text("0", style: TextStyle(color: Colors.black, fontSize: 12)),
+              child: const Text("0",
+                  style: TextStyle(color: Colors.black, fontSize: 12)),
             )
           ],
         ),
@@ -44,7 +47,8 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
           const SizedBox(height: 24),
           _buildEmptyCartIcon(),
           const SizedBox(height: 24),
-          const Text("From Your Wishlist", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          const Text("From Your Wishlist",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
           const SizedBox(height: 12),
           ...wishlistItems.map(_buildWishlistItem),
           const SizedBox(height: 16),
@@ -52,14 +56,16 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
         ],
       ),
@@ -75,7 +81,10 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const CircleAvatar(radius: 20, backgroundImage: AssetImage('assets/images/profile_most_popular_1.png')),
+          const CircleAvatar(
+              radius: 20,
+              backgroundImage:
+                  AssetImage('assets/images/profile_most_popular_1.png')),
           const SizedBox(width: 12),
           const Expanded(
             child: Text(
@@ -87,7 +96,7 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, '/editShipping'),
             child: const CircleAvatar(
               radius: 14,
-              backgroundColor: Colors.blue,
+              backgroundColor: Color(0xFF004CFF),
               child: Icon(Icons.edit, size: 14, color: Colors.white),
             ),
           ),
@@ -111,7 +120,8 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
             ),
           ],
         ),
-        child: const Icon(Icons.shopping_bag_outlined, size: 60, color: Colors.blue),
+        child: const Icon(Icons.shopping_bag_outlined,
+            size: 60, color: Color(0xFF004CFF)),
       ),
     );
   }
@@ -123,22 +133,25 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(imagePath, height: 80, width: 80, fit: BoxFit.cover),
+            child: Image.asset(imagePath,
+                height: 80, width: 80, fit: BoxFit.cover),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Text("Lorem ipsum dolor sit amet", style: TextStyle(fontSize: 12)),
+                Text("Lorem ipsum dolor sit amet",
+                    style: TextStyle(fontSize: 12)),
                 SizedBox(height: 4),
                 Text("\$17,00", style: TextStyle(fontWeight: FontWeight.bold)),
                 SizedBox(height: 4),
-                Text("Pink   M", style: TextStyle(fontSize: 12, color: Colors.grey)),
+                Text("S   M",
+                    style: TextStyle(fontSize: 12, color: Colors.grey)),
               ],
             ),
           ),
-          const Icon(Icons.move_to_inbox, color: Colors.blue)
+          const Icon(Icons.move_to_inbox, color: Color(0xFF004CFF))
         ],
       ),
     );
@@ -148,12 +161,14 @@ class CartEmptyShownFromWishlistScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text("Total \$0.00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        const Text("Total \$0.00",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
         ElevatedButton(
           onPressed: () => Navigator.pushNamed(context, '/payment'),
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: Color(0xFF004CFF),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),

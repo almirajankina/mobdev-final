@@ -28,7 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Text(
         title,
         style: const TextStyle(
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.black87,
         ),
@@ -41,10 +41,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         ListTile(
           title: Text(label),
-          trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+          trailing: const Icon(Icons.arrow_forward_ios, size: 18),
           onTap: onTap,
         ),
-        const Divider(thickness: 1, color: Colors.grey),
+        const Divider(thickness: 1, color: Color(0xFFE0E0E0)),
       ],
     );
   }
@@ -52,6 +52,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Settings'),
         backgroundColor: Colors.white,
@@ -157,7 +158,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             },
           ),
           buildSettingRow(
-            'About Slada',
+            'About Shoppe',
             onTap: () {
               Navigator.push(
                 context,
@@ -188,7 +189,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               children: [
                 Text(
-                  'Slada',
+                  'Shoppe',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -197,7 +198,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  'Version 1.0 • April, 2020',
+                  'Version 1.0 • May, 2025',
                   style: TextStyle(color: Colors.black38, fontSize: 12),
                 ),
               ],

@@ -55,11 +55,11 @@ class SearchResultsScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          const Icon(Icons.camera_alt_outlined, color: Colors.blue),
+          const Icon(Icons.camera_alt_outlined, color: Color(0xFF004CFF)),
           const SizedBox(width: 12),
           GestureDetector(
             onTap: () => Navigator.pushNamed(context, '/filter'),
-            child: const Icon(Icons.tune, color: Colors.blue),
+            child: const Icon(Icons.tune, color: Color(0xFF004CFF)),
           ),
         ],
       ),
@@ -114,8 +114,8 @@ class SearchResultsScreen extends StatelessWidget {
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.blue,
+      selectedItemColor: Color(0xFF004CFF),
+      unselectedItemColor: Color(0xFF004CFF),
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),

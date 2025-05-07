@@ -33,7 +33,7 @@ class CartScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xFF004CFF),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(

@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue,
+                            backgroundColor: Color(0xFF004CFF),
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
@@ -103,11 +103,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text('Enter your email')),
+                                const SnackBar(
+                                    content: Text('Enter your email')),
                               );
                             }
                           },
-                          child: const Text('Next', style: TextStyle(fontSize: 16)),
+                          child: const Text('Next',
+                              style: TextStyle(fontSize: 16)),
                         ),
                       ),
                       const SizedBox(height: 12),

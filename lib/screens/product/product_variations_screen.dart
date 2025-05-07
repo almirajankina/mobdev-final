@@ -4,7 +4,8 @@ class ProductVariationsScreen extends StatefulWidget {
   const ProductVariationsScreen({super.key});
 
   @override
-  State<ProductVariationsScreen> createState() => _ProductVariationsScreenState();
+  State<ProductVariationsScreen> createState() =>
+      _ProductVariationsScreenState();
 }
 
 class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
@@ -13,7 +14,7 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
   int selectedSizeIndex = 1;
 
   final colors = [
-    Colors.blue,
+    Color(0xFF004CFF),
     Colors.orange,
     Colors.red,
     Colors.teal,
@@ -79,13 +80,15 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                             children: [
                               const Text(
                                 '\$17,00',
-                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 4),
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 4),
                                 decoration: BoxDecoration(
-                                  color: Colors.blue.shade50,
+                                  color: Color(0xFF004CFF),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: const Text('Pink   M'),
@@ -95,7 +98,8 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                         ],
                       ),
                       const SizedBox(height: 24),
-                      const Text('Color Options', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Text('Color Options',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       Row(
                         children: List.generate(colors.length, (index) {
@@ -111,7 +115,9 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  color: selectedColorIndex == index ? Colors.blue : Colors.transparent,
+                                  color: selectedColorIndex == index
+                                      ? Color(0xFF004CFF)
+                                      : Colors.transparent,
                                   width: 2,
                                 ),
                               ),
@@ -124,7 +130,8 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                         }),
                       ),
                       const SizedBox(height: 24),
-                      const Text('Size', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Text('Size',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,16 +143,21 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                               });
                             },
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 8),
                               decoration: BoxDecoration(
-                                color: selectedSizeIndex == index ? Colors.blue : Colors.white,
+                                color: selectedSizeIndex == index
+                                    ? Color(0xFF004CFF)
+                                    : Colors.white,
                                 borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: Colors.blue),
+                                border: Border.all(color: Color(0xFF004CFF)),
                               ),
                               child: Text(
                                 sizes[index],
                                 style: TextStyle(
-                                  color: selectedSizeIndex == index ? Colors.white : Colors.blue,
+                                  color: selectedSizeIndex == index
+                                      ? Colors.white
+                                      : Color(0xFF004CFF),
                                 ),
                               ),
                             ),
@@ -153,7 +165,8 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                         }),
                       ),
                       const SizedBox(height: 24),
-                      const Text('Quantity', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const Text('Quantity',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +179,9 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                             },
                             icon: const Icon(Icons.remove_circle_outline),
                           ),
-                          Text('$quantity', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          Text('$quantity',
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
                           IconButton(
                             onPressed: () {
                               setState(() {
@@ -199,7 +214,8 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: ElevatedButton(
                   onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: Colors.black),
                   child: const Text('Add to Cart'),
                 ),
               ),
@@ -207,7 +223,8 @@ class _ProductVariationsScreenState extends State<ProductVariationsScreen> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {},
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF004CFF)),
                 child: const Text('Buy Now'),
               ),
             ),

@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
               child: Center(
                 child: Icon(
                   Icons.shopping_bag, // Иконка сумки
-                  color: Colors.blue,
+                  color: Color(0xFF004CFF),
                   size: 150, // Размер иконки
                 ),
               ),
@@ -76,7 +76,7 @@ class AboutPage extends StatelessWidget {
                         'hello@mydomain.com',
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.blue,
+                          color: Color(0xFF004CFF),
                           fontWeight: FontWeight.bold,
                         ),
                       ),

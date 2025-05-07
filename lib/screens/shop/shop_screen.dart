@@ -208,7 +208,7 @@ class _ShopScreenState extends State<ShopScreen> {
               Text("Just For You",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               SizedBox(width: 4),
-              Icon(Icons.star, color: Colors.blue, size: 16),
+              Icon(Icons.star, color: Color(0xFF004CFF), size: 16),
             ],
           ),
           const SizedBox(height: 8),
@@ -367,7 +367,8 @@ class _ShopScreenState extends State<ShopScreen> {
                         children: const [
                           Text("1780"),
                           SizedBox(width: 4),
-                          Icon(Icons.favorite, color: Colors.blue, size: 14),
+                          Icon(Icons.favorite,
+                              color: Color(0xFF004CFF), size: 14),
                         ],
                       ),
                     ],
@@ -389,8 +390,8 @@ class _ShopScreenState extends State<ShopScreen> {
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         Container(
           padding: const EdgeInsets.all(4),
-          decoration:
-              const BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
+          decoration: const BoxDecoration(
+              color: Color(0xFF004CFF), shape: BoxShape.circle),
           child: const Icon(Icons.arrow_forward, color: Colors.white, size: 14),
         ),
       ],

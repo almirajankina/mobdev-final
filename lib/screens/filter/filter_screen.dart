@@ -30,7 +30,7 @@ class _FilterScreenState extends State<FilterScreen> {
     Colors.white,
     Colors.black,
     Colors.red,
-    Colors.blue,
+    Color(0xFF004CFF),
     Colors.green,
     Colors.yellow,
     Colors.purple,
@@ -53,7 +53,8 @@ class _FilterScreenState extends State<FilterScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: const BackButton(color: Colors.black),
-        title: const Text("Filter", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: const Text("Filter",
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
       body: ListView(
@@ -94,7 +95,7 @@ class _FilterScreenState extends State<FilterScreen> {
                 right: 4,
                 child: CircleAvatar(
                   radius: 8,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   child: Icon(Icons.check, size: 12, color: Colors.white),
                 ),
               ),
@@ -109,7 +110,8 @@ class _FilterScreenState extends State<FilterScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Size", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text("Size",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 12),
         Row(
           children: [
@@ -126,16 +128,17 @@ class _FilterScreenState extends State<FilterScreen> {
             return GestureDetector(
               onTap: () => setState(() => selectedSize = size),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.blue : Colors.transparent,
+                  color: isSelected ? Color(0xFF004CFF) : Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: Colors.blue),
+                  border: Border.all(color: Color(0xFF004CFF)),
                 ),
                 child: Text(
                   size,
                   style: TextStyle(
-                    color: isSelected ? Colors.white : Colors.blue,
+                    color: isSelected ? Colors.white : Color(0xFF004CFF),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -151,7 +154,7 @@ class _FilterScreenState extends State<FilterScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       decoration: BoxDecoration(
-        color: isSelected ? Colors.blue : Colors.grey.shade200,
+        color: isSelected ? Color(0xFF004CFF) : Colors.grey.shade200,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -168,7 +171,8 @@ class _FilterScreenState extends State<FilterScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Color", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text("Color",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 12),
         Row(
           children: colors.map((color) {
@@ -184,7 +188,11 @@ class _FilterScreenState extends State<FilterScreen> {
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.grey.shade300),
                 ),
-                child: isSelected ? const Center(child: Icon(Icons.check, size: 16, color: Colors.blue)) : null,
+                child: isSelected
+                    ? const Center(
+                        child: Icon(Icons.check,
+                            size: 16, color: Color(0xFF004CFF)))
+                    : null,
               ),
             );
           }).toList(),
@@ -197,7 +205,8 @@ class _FilterScreenState extends State<FilterScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Price", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text("Price",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -213,7 +222,7 @@ class _FilterScreenState extends State<FilterScreen> {
           max: 200,
           divisions: 20,
           onChanged: (values) => setState(() => _priceRange = values),
-          activeColor: Colors.blue,
+          activeColor: Color(0xFF004CFF),
         ),
       ],
     );
@@ -223,7 +232,8 @@ class _FilterScreenState extends State<FilterScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Sort", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+        const Text("Sort",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,
@@ -232,9 +242,10 @@ class _FilterScreenState extends State<FilterScreen> {
             return GestureDetector(
               onTap: () => setState(() => selectedSort = option),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.blue : Colors.grey.shade200,
+                  color: isSelected ? Color(0xFF004CFF) : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
@@ -272,7 +283,9 @@ class _FilterScreenState extends State<FilterScreen> {
                 borderRadius: BorderRadius.circular(30),
               ),
               child: const Center(
-                child: Text("Clear", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                child: Text("Clear",
+                    style: TextStyle(
+                        color: Color(0xFF004CFF), fontWeight: FontWeight.bold)),
               ),
             ),
           ),
@@ -284,11 +297,13 @@ class _FilterScreenState extends State<FilterScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xFF004CFF),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: const Center(
-                child: Text("Apply", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                child: Text("Apply",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold)),
               ),
             ),
           ),

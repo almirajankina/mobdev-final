@@ -41,7 +41,8 @@ class RecentlyViewedScreen extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const RecentlyViewedDateScreen()),
+          MaterialPageRoute(
+              builder: (context) => const RecentlyViewedDateScreen()),
         );
       },
       child: Container(
@@ -53,7 +54,9 @@ class RecentlyViewedScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(date, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+            Text(date,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
             const Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
           ],
         ),
@@ -63,14 +66,15 @@ class RecentlyViewedScreen extends StatelessWidget {
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.blue,
+      selectedItemColor: Color(0xFF004CFF),
+      unselectedItemColor: Color(0xFF004CFF),
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
       ],
     );

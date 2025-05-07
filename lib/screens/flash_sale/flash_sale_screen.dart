@@ -42,15 +42,21 @@ class FlashSaleScreen extends StatelessWidget {
             child: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
           ),
           const SizedBox(height: 12),
-          const Text("Flash Sale", style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+          const Text("Flash Sale",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold)),
           const SizedBox(height: 4),
-          const Text("Choose Your Discount", style: TextStyle(color: Colors.white70, fontSize: 14)),
+          const Text("Choose Your Discount",
+              style: TextStyle(color: Colors.white70, fontSize: 14)),
           const SizedBox(height: 12),
           Row(
             children: const [
               Icon(Icons.access_time, color: Colors.white),
               SizedBox(width: 8),
-              Text("00  :  36  :  58", style: TextStyle(color: Colors.white, fontSize: 16)),
+              Text("00  :  36  :  58",
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
             ],
           ),
         ],
@@ -69,11 +75,13 @@ class FlashSaleScreen extends StatelessWidget {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              color: isSelected ? Colors.blue : Colors.transparent,
+              color: isSelected ? Color(0xFF004CFF) : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.blue),
+              border: Border.all(color: Color(0xFF004CFF)),
             ),
-            child: Text(filter, style: TextStyle(color: isSelected ? Colors.white : Colors.blue)),
+            child: Text(filter,
+                style: TextStyle(
+                    color: isSelected ? Colors.white : Color(0xFF004CFF))),
           );
         }).toList(),
       ),
@@ -82,10 +90,26 @@ class FlashSaleScreen extends StatelessWidget {
 
   Widget _buildDiscountSection(BuildContext context) {
     final products = [
-      {'img': 'assets/images/flash_sale_5.png', 'price': '\$16,00', 'oldPrice': '\$20,00'},
-      {'img': 'assets/images/flash_sale_6.png', 'price': '\$16,00', 'oldPrice': '\$20,00'},
-      {'img': 'assets/images/flash_sale_1.png', 'price': '\$16,00', 'oldPrice': '\$20,00'},
-      {'img': 'assets/images/flash_sale_2.png', 'price': '\$16,00', 'oldPrice': '\$20,00'},
+      {
+        'img': 'assets/images/flash_sale_5.png',
+        'price': '\$16,00',
+        'oldPrice': '\$20,00'
+      },
+      {
+        'img': 'assets/images/flash_sale_6.png',
+        'price': '\$16,00',
+        'oldPrice': '\$20,00'
+      },
+      {
+        'img': 'assets/images/flash_sale_1.png',
+        'price': '\$16,00',
+        'oldPrice': '\$20,00'
+      },
+      {
+        'img': 'assets/images/flash_sale_2.png',
+        'price': '\$16,00',
+        'oldPrice': '\$20,00'
+      },
     ];
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -95,7 +119,8 @@ class FlashSaleScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text("20% Discount", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Text("20% Discount",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               Icon(Icons.tune, size: 20, color: Colors.grey),
             ],
           ),
@@ -110,7 +135,7 @@ class FlashSaleScreen extends StatelessWidget {
             children: products.map((product) {
               return GestureDetector(
                 onTap: () {
-                Navigator.pushNamed(context, '/productFull');
+                  Navigator.pushNamed(context, '/productFull');
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,28 +144,42 @@ class FlashSaleScreen extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(product['img']!, fit: BoxFit.cover, height: 150, width: double.infinity),
+                          child: Image.asset(product['img']!,
+                              fit: BoxFit.cover,
+                              height: 150,
+                              width: double.infinity),
                         ),
                         Positioned(
                           top: 8,
                           right: 8,
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                            decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(4)),
-                            child: const Text("-20%", style: TextStyle(color: Colors.white, fontSize: 10)),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 2),
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(4)),
+                            child: const Text("-20%",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 10)),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 4),
-                    const Text("Lorem ipsum dolor sit amet", style: TextStyle(fontSize: 12)),
+                    const Text("Lorem ipsum dolor sit amet",
+                        style: TextStyle(fontSize: 12)),
                     Row(
                       children: [
-                        Text(product['price']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+                        Text(product['price']!,
+                            style:
+                                const TextStyle(fontWeight: FontWeight.bold)),
                         const SizedBox(width: 4),
                         Text(
                           product['oldPrice']!,
-                          style: const TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 12),
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 12),
                         ),
                       ],
                     ),
@@ -159,15 +198,24 @@ class FlashSaleScreen extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.asset('assets/images/big_sale.png', height: 120, fit: BoxFit.cover),
+        child: Image.asset('assets/images/big_sale.png',
+            height: 120, fit: BoxFit.cover),
       ),
     );
   }
 
   Widget _buildNewItemsSection() {
     final images = [
-      {'img': 'assets/images/categories_shoes_2.png', 'price': '\$16,00', 'oldPrice': '\$20,00'},
-      {'img': 'assets/images/categories_shoes_1.png', 'price': '\$16,00', 'oldPrice': '\$20,00'},
+      {
+        'img': 'assets/images/categories_shoes_2.png',
+        'price': '\$16,00',
+        'oldPrice': '\$20,00'
+      },
+      {
+        'img': 'assets/images/categories_shoes_1.png',
+        'price': '\$16,00',
+        'oldPrice': '\$20,00'
+      },
     ];
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -177,8 +225,9 @@ class FlashSaleScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text("New Items", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-              Icon(Icons.arrow_forward, color: Colors.blue, size: 16),
+              Text("New Items",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Icon(Icons.arrow_forward, color: Color(0xFF004CFF), size: 16),
             ],
           ),
           const SizedBox(height: 8),
@@ -189,14 +238,20 @@ class FlashSaleScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(item['img']!, width: 130, height: 130, fit: BoxFit.cover),
+                    child: Image.asset(item['img']!,
+                        width: 130, height: 130, fit: BoxFit.cover),
                   ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      Text(item['price']!, style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Text(item['price']!,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                       const SizedBox(width: 4),
-                      Text(item['oldPrice']!, style: const TextStyle(color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 12)),
+                      Text(item['oldPrice']!,
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 12)),
                     ],
                   ),
                 ],
@@ -222,8 +277,9 @@ class FlashSaleScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              Text("Most Popular", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-              Icon(Icons.arrow_forward, color: Colors.blue, size: 16),
+              Text("Most Popular",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              Icon(Icons.arrow_forward, color: Color(0xFF004CFF), size: 16),
             ],
           ),
           const SizedBox(height: 8),
@@ -234,17 +290,21 @@ class FlashSaleScreen extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(item['img']!, width: 100, height: 100, fit: BoxFit.cover),
+                    child: Image.asset(item['img']!,
+                        width: 100, height: 100, fit: BoxFit.cover),
                   ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
                       const Text("1780"),
                       const SizedBox(width: 4),
-                      const Icon(Icons.favorite, color: Colors.blue, size: 14),
+                      const Icon(Icons.favorite,
+                          color: Color(0xFF004CFF), size: 14),
                       if (item['label']!.isNotEmpty) ...[
                         const SizedBox(width: 4),
-                        Text(item['label']!, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+                        Text(item['label']!,
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 12)),
                       ]
                     ],
                   ),
@@ -259,14 +319,15 @@ class FlashSaleScreen extends StatelessWidget {
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.blue,
+      selectedItemColor: Color(0xFF004CFF),
+      unselectedItemColor: Color(0xFF004CFF),
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
       ],
     );

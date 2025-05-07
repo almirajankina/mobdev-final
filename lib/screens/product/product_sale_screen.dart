@@ -52,7 +52,7 @@ class ProductSaleScreen extends StatelessWidget {
               width: 60,
               height: 6,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color(0xFF004CFF),
                 borderRadius: BorderRadius.circular(3),
               ),
             ),
@@ -70,24 +70,33 @@ class ProductSaleScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text("\$24,00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+              const Text("\$24,00",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               const SizedBox(width: 8),
               const Text(
                 "\$30,00",
-                style: TextStyle(fontSize: 14, color: Colors.grey, decoration: TextDecoration.lineThrough),
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                    decoration: TextDecoration.lineThrough),
               ),
               const SizedBox(width: 4),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(4)),
-                child: const Text("-20%", style: TextStyle(color: Colors.white, fontSize: 10)),
+                decoration: BoxDecoration(
+                    color: Colors.red, borderRadius: BorderRadius.circular(4)),
+                child: const Text("-20%",
+                    style: TextStyle(color: Colors.white, fontSize: 10)),
               ),
               const Spacer(),
               Row(
                 children: const [
-                  Icon(Icons.access_time, size: 16, color: Colors.blue),
+                  Icon(Icons.access_time, size: 16, color: Color(0xFF004CFF)),
                   SizedBox(width: 4),
-                  Text("00 : 36 : 58", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+                  Text("00 : 36 : 58",
+                      style: TextStyle(
+                          color: Color(0xFF004CFF),
+                          fontWeight: FontWeight.bold)),
                 ],
               ),
             ],
@@ -100,11 +109,13 @@ class ProductSaleScreen extends StatelessWidget {
           const SizedBox(height: 16),
           Row(
             children: [
-              const Text("Variations", style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text("Variations",
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/productVariations'),
-                child: const Icon(Icons.arrow_forward, color: Colors.blue),
+                child:
+                    const Icon(Icons.arrow_forward, color: Color(0xFF004CFF)),
               ),
             ],
           ),
@@ -129,7 +140,7 @@ class ProductSaleScreen extends StatelessWidget {
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(Icons.favorite_border, color: Colors.blue),
+            icon: const Icon(Icons.favorite_border, color: Color(0xFF004CFF)),
             onPressed: () {},
           ),
           Expanded(
@@ -140,7 +151,8 @@ class ProductSaleScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.black,
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                 ),
                 child: const Text("Add to cart"),
               ),
@@ -152,9 +164,10 @@ class ProductSaleScreen extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   padding: const EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                 ),
                 child: const Text("Buy now"),
               ),

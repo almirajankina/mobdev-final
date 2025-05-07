@@ -29,7 +29,7 @@ class PaymentInProgressScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: const [
               SizedBox(height: 8),
-              CircularProgressIndicator(color: Colors.blue),
+              CircularProgressIndicator(color: Color(0xFF004CFF)),
               SizedBox(height: 24),
               Text(
                 'Payment is in progress',

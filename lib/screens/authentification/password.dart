@@ -78,7 +78,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
           width: 14,
           height: 14,
           decoration: BoxDecoration(
-            color: index < filled ? Colors.blue : Colors.grey,
+            color: index < filled ? Color(0xFF004CFF) : Colors.grey,
             shape: BoxShape.circle,
           ),
         ),
@@ -182,7 +182,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                           width: double.infinity,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue,
+                              backgroundColor: Color(0xFF004CFF),
                               foregroundColor: Colors.white,
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
@@ -190,7 +190,8 @@ class _PasswordScreenState extends State<PasswordScreen> {
                               ),
                             ),
                             onPressed: login,
-                            child: const Text('Login', style: TextStyle(fontSize: 16)),
+                            child: const Text('Login',
+                                style: TextStyle(fontSize: 16)),
                           ),
                         ),
 

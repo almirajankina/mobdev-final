@@ -39,10 +39,9 @@ class _VouchersScreenState extends State<VouchersScreen> {
         children: [
           _buildTabBar(),
           Expanded(
-            child:
-                selectedTabIndex == 0
-                    ? const ActiveRewardsTab()
-                    : const ProgressTab(),
+            child: selectedTabIndex == 0
+                ? const ActiveRewardsTab()
+                : const ProgressTab(),
           ),
         ],
       ),
@@ -68,13 +67,15 @@ class _VouchersScreenState extends State<VouchersScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue[100] : Colors.grey[200],
+          color: isSelected
+              ? Color.fromARGB(255, 218, 222, 230)
+              : Colors.grey[200],
           borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           label,
           style: TextStyle(
-            color: isSelected ? Colors.blue : Colors.black54,
+            color: isSelected ? Color(0xFF004CFF) : Colors.black54,
             fontWeight: FontWeight.bold,
           ),
         ),

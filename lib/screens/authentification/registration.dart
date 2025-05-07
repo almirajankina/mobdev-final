@@ -20,7 +20,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   File? _profileImage;
 
   Future<void> _pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _profileImage = File(pickedFile.path);
@@ -33,7 +34,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final password = passwordController.text.trim();
     final phone = phoneController.text.trim();
 
-    if (email.isEmpty || password.isEmpty || phone.isEmpty || _profileImage == null) {
+    if (email.isEmpty ||
+        password.isEmpty ||
+        phone.isEmpty ||
+        _profileImage == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Fill all fields and select a photo')),
       );
@@ -48,7 +52,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       print("✅ Registered user: $uid");
 
       // ✅ Upload profile image to Firebase Storage
-      final imageRef = FirebaseStorage.instance.ref().child('users/$uid/profile.jpg');
+      final imageRef =
+          FirebaseStorage.instance.ref().child('users/$uid/profile.jpg');
       await imageRef.putFile(_profileImage!);
       final imageUrl = await imageRef.getDownloadURL();
       print("✅ Image uploaded: $imageUrl");
@@ -64,7 +69,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       };
 
       // ✅ Write to Firestore under users/{uid}
-      await FirebaseFirestore.instance.collection('users').doc(uid).set(userData);
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .set(userData);
       print("✅ User data written to Firestore");
 
       Navigator.pushReplacementNamed(context, '/');
@@ -112,14 +120,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 SizedBox(
                   width: double.infinity,
                   height: 330,
-                  child: Image.asset('assets/images/Bubbles.png', fit: BoxFit.cover),
+                  child: Image.asset('assets/images/Bubbles.png',
+                      fit: BoxFit.cover),
                 ),
                 const Positioned(
                   left: 24,
                   bottom: 24,
                   child: Text(
                     'Create\nAccount',
-                    style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                 ),
               ],
@@ -137,7 +149,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     painter: DashedCirclePainter(),
                     child: Center(
                       child: IconButton(
-                        icon: const Icon(Icons.camera_alt_outlined, size: 32, color: Colors.blue),
+                        icon: const Icon(Icons.camera_alt_outlined,
+                            size: 32, color: Color(0xFF004CFF)),
                         onPressed: _pickImage,
                       ),
                     ),
@@ -150,14 +163,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 children: [
-                  _buildInputField(controller: emailController, hintText: 'Email'),
+                  _buildInputField(
+                      controller: emailController, hintText: 'Email'),
                   const SizedBox(height: 16),
                   _buildInputField(
                     controller: passwordController,
                     hintText: 'Password',
                     obscureText: _obscurePassword,
                     suffixIcon: IconButton(
-                      icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
+                      icon: Icon(_obscurePassword
+                          ? Icons.visibility_off
+                          : Icons.visibility),
                       onPressed: () {
                         setState(() {
                           _obscurePassword = !_obscurePassword;
@@ -176,7 +192,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xFF004CFF),
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
@@ -192,7 +208,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/welcome');
                     },
-                    child: const Text('Cancel', style: TextStyle(fontSize: 14, color: Colors.grey)),
+                    child: const Text('Cancel',
+                        style: TextStyle(fontSize: 14, color: Colors.grey)),
                   ),
                 ],
               ),
@@ -208,7 +225,7 @@ class DashedCirclePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()
-      ..color = Colors.blue
+      ..color = Color(0xFF004CFF)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 

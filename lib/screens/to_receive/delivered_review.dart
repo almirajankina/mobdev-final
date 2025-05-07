@@ -80,14 +80,13 @@ class TrackOrderCompletedScreen extends StatelessWidget {
                       height: 6,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors:
-                              isLastStep && !isFailed
-                                  ? [
-                                    Colors.blue,
-                                    Colors.blue,
-                                    const Color.fromARGB(255, 22, 190, 10),
-                                  ]
-                                  : [Colors.blue, Colors.lightBlueAccent],
+                          colors: isLastStep && !isFailed
+                              ? [
+                                  Color(0xFF004CFF),
+                                  Color(0xFF004CFF),
+                                  const Color.fromARGB(255, 22, 190, 10),
+                                ]
+                              : [Color(0xFF004CFF), Colors.lightBlueAccent],
                           stops:
                               isLastStep && !isFailed ? [0.0, 0.7, 1.0] : null,
                           begin: Alignment.centerLeft,
@@ -107,19 +106,17 @@ class TrackOrderCompletedScreen extends StatelessWidget {
                         width: 16,
                         height: 16,
                         decoration: BoxDecoration(
-                          color:
-                              isCompleted
-                                  ? (isLastStep && index == totalSteps - 1
-                                      ? const Color.fromARGB(255, 22, 190, 10)
-                                      : Colors.blue)
-                                  : Colors.white,
+                          color: isCompleted
+                              ? (isLastStep && index == totalSteps - 1
+                                  ? const Color.fromARGB(255, 22, 190, 10)
+                                  : Color(0xFF004CFF))
+                              : Colors.white,
                           border: Border.all(
-                            color:
-                                isCompleted
-                                    ? (isLastStep && index == totalSteps - 1
-                                        ? const Color.fromARGB(255, 22, 190, 10)
-                                        : Colors.blue)
-                                    : Colors.grey,
+                            color: isCompleted
+                                ? (isLastStep && index == totalSteps - 1
+                                    ? const Color.fromARGB(255, 22, 190, 10)
+                                    : Color(0xFF004CFF))
+                                : Colors.grey,
                             width: 2,
                           ),
                           shape: BoxShape.circle,
@@ -263,7 +260,7 @@ class TrackOrderCompletedScreen extends StatelessWidget {
           Icon(
             Icons.check_circle,
             size: 20,
-            color: active ? Colors.blue : Colors.grey,
+            color: active ? Color(0xFF004CFF) : Colors.grey,
           ),
           const SizedBox(width: 12),
           Expanded(

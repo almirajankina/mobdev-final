@@ -8,7 +8,8 @@ class EditShippingAddressScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.95),
       appBar: AppBar(
-        title: const Text('Shipping Address', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: const Text('Shipping Address',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -20,7 +21,8 @@ class EditShippingAddressScreen extends StatelessWidget {
           children: [
             _buildDropdownField('Country', 'India'),
             const SizedBox(height: 16),
-            _buildTextField('Address', 'Magadi Main Rd, next to Prasanna Theatre, C'),
+            _buildTextField(
+                'Address', 'Magadi Main Rd, next to Prasanna Theatre, C'),
             const SizedBox(height: 16),
             _buildTextField('Town / City', 'Bengaluru, Karnataka 560023'),
             const SizedBox(height: 16),
@@ -31,14 +33,16 @@ class EditShippingAddressScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt_outlined), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_outlined), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_bag_outlined), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: ''),
         ],
       ),
@@ -96,11 +100,13 @@ class EditShippingAddressScreen extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () => Navigator.pop(context),
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
+          backgroundColor: Color(0xFF004CFF),
           padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         ),
-        child: const Text('Save Changes', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        child: const Text('Save Changes',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
     );
   }

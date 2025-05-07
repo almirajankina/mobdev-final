@@ -122,7 +122,7 @@ class ProductFullScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              const Chip(label: Text("Pink")),
+              const Chip(label: Text("S")),
               const SizedBox(width: 8),
               const Chip(label: Text("M")),
               const Spacer(),
@@ -130,7 +130,7 @@ class ProductFullScreen extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(context, '/productVariations'),
                 child: const CircleAvatar(
                   radius: 16,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   child:
                       Icon(Icons.arrow_forward, color: Colors.white, size: 16),
                 ),
@@ -181,7 +181,7 @@ class ProductFullScreen extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(context, '/categoriesFilter'),
                 child: const CircleAvatar(
                   radius: 16,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   child:
                       Icon(Icons.arrow_forward, color: Colors.white, size: 16),
                 ),
@@ -229,14 +229,14 @@ class ProductFullScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue),
+        border: Border.all(color: Color(0xFF004CFF)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(type, style: const TextStyle(fontSize: 16)),
-          Text(time, style: const TextStyle(color: Colors.blue)),
+          Text(time, style: const TextStyle(color: Color(0xFF004CFF))),
           Text(price, style: const TextStyle(fontWeight: FontWeight.bold)),
         ],
       ),
@@ -262,7 +262,7 @@ class ProductFullScreen extends StatelessWidget {
               SizedBox(width: 8),
               Text("4/5",
                   style: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.bold)),
+                      color: Color(0xFF004CFF), fontWeight: FontWeight.bold)),
             ],
           ),
           const SizedBox(height: 12),
@@ -279,8 +279,7 @@ class ProductFullScreen extends StatelessWidget {
                   Text("Veronika",
                       style: TextStyle(fontWeight: FontWeight.bold)),
                   SizedBox(height: 4),
-                  Text(
-                      "Lorem ipsum dolor sit amet, consectetur sadipscing elitr.",
+                  Text("Hi, I'm Veronika.",
                       style: TextStyle(color: Colors.black54, fontSize: 12)),
                 ],
               ),
@@ -291,8 +290,12 @@ class ProductFullScreen extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () => Navigator.pushNamed(context, '/reviews'),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              child: const Text("View All Reviews"),
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Color(0xFF004CFF)),
+              child: const Text(
+                "View All Reviews",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
         ],
@@ -320,7 +323,7 @@ class ProductFullScreen extends StatelessWidget {
                 onTap: () => Navigator.pushNamed(context, '/productSale'),
                 child: const CircleAvatar(
                   radius: 16,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   child:
                       Icon(Icons.arrow_forward, color: Colors.white, size: 16),
                 ),
@@ -395,7 +398,7 @@ class ProductFullScreen extends StatelessWidget {
       right: 0,
       child: Container(
         color: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
             IconButton(
@@ -419,15 +422,28 @@ class ProductFullScreen extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Expanded(
-              child: ElevatedButton(
+              child: OutlinedButton(
                 onPressed: () {
                   addToCart(product);
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text("Added to cart")),
                   );
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const Text("Add to cart"),
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: Color(0xFF004CFF), width: 2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                child: const Text(
+                  "Add to Cart",
+                  style: TextStyle(
+                    color: Color(0xFF004CFF),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ),
             const SizedBox(width: 8),
@@ -437,8 +453,21 @@ class ProductFullScreen extends StatelessWidget {
                   addToCart(product);
                   Navigator.pushNamed(context, '/cart');
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text("Buy now"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF004CFF),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                ),
+                child: const Text(
+                  "Buy Now",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
               ),
             ),
           ],

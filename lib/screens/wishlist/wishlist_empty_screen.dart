@@ -49,7 +49,7 @@ class WishlistEmptyScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/recentlyViewed'),
                 child: const CircleAvatar(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   radius: 12,
                   child:
                       Icon(Icons.arrow_forward, size: 14, color: Colors.white),
@@ -91,7 +91,7 @@ class WishlistEmptyScreen extends StatelessWidget {
                   onPressed: () =>
                       Navigator.pushReplacementNamed(context, '/shop'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xFF004CFF),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 24, vertical: 14),
                     shape: RoundedRectangleBorder(
@@ -112,7 +112,7 @@ class WishlistEmptyScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () {},
                 child: const CircleAvatar(
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF004CFF),
                   radius: 12,
                   child:
                       Icon(Icons.arrow_forward, size: 14, color: Colors.white),
@@ -153,7 +153,7 @@ class WishlistEmptyScreen extends StatelessWidget {
                               style: const TextStyle(fontSize: 12)),
                           const SizedBox(width: 4),
                           const Icon(Icons.favorite,
-                              color: Colors.blue, size: 14),
+                              color: Color(0xFF004CFF), size: 14),
                           if (item['tag']!.isNotEmpty) ...[
                             const SizedBox(width: 4),
                             Text(item['tag']!,
@@ -171,8 +171,8 @@ class WishlistEmptyScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xFF004CFF),
+        unselectedItemColor: Color(0xFF004CFF),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),

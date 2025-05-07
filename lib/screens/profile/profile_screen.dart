@@ -25,7 +25,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (user == null) return;
 
     try {
-      final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
       final data = doc.data();
 
       setState(() {
@@ -134,13 +137,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue),
+                border: Border.all(color: Color(0xFF004CFF)),
                 borderRadius: BorderRadius.circular(30),
               ),
               child: const Text(
                 'My Activity',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: Color(0xFF004CFF),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -159,11 +162,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: const [
           Expanded(
             child: Text(
-              "Lorem hendrerit luctus libero ac vulputate.",
+              "This is your profile.",
               style: TextStyle(color: Colors.grey),
             ),
           ),
-          Icon(Icons.settings, color: Colors.blue),
+          Icon(Icons.settings, color: Color(0xFF004CFF)),
         ],
       ),
     );
@@ -266,30 +269,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:
-                items.map((item) {
-                  return GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, '/product'),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            item['img']!,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          item['price']!,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
+            children: items.map((item) {
+              return GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/product'),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        item['img']!,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  );
-                }).toList(),
+                    const SizedBox(height: 4),
+                    Text(
+                      item['price']!,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
           ),
         ],
       ),
@@ -338,7 +340,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           const SizedBox(width: 4),
                           const Icon(
                             Icons.favorite,
-                            color: Colors.blue,
+                            color: Color(0xFF004CFF),
                             size: 14,
                           ),
                           if (item['label']!.isNotEmpty) ...[
@@ -383,18 +385,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 6),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children:
-                      entry.value.map((img) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            img,
-                            width: 70,
-                            height: 70,
-                            fit: BoxFit.cover,
-                          ),
-                        );
-                      }).toList(),
+                  children: entry.value.map((img) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        img,
+                        width: 70,
+                        height: 70,
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  }).toList(),
                 ),
                 const SizedBox(height: 12),
               ],
@@ -427,46 +428,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Wrap(
             spacing: 8,
             runSpacing: 8,
-            children:
-                items.map((img) {
-                  return GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, '/product'),
-                    child: Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            img,
-                            width: 99,
-                            height: 103,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          top: 4,
-                          right: 4,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 4,
-                              vertical: 2,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: const Text(
-                              "-20%",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+            children: items.map((img) {
+              return GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/product'),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        img,
+                        width: 99,
+                        height: 103,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  );
-                }).toList(),
+                    Positioned(
+                      top: 4,
+                      right: 4,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: const Text(
+                          "-20%",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
           ),
         ],
       ),
@@ -493,17 +493,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:
-                images.map((img) {
-                  return ClipOval(
-                    child: Image.asset(
-                      img,
-                      width: 60,
-                      height: 60,
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                }).toList(),
+            children: images.map((img) {
+              return ClipOval(
+                child: Image.asset(
+                  img,
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.cover,
+                ),
+              );
+            }).toList(),
           ),
         ],
       ),
@@ -531,7 +530,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(width: 4),
-              Icon(Icons.star, color: Colors.blue, size: 16),
+              Icon(Icons.star, color: Color(0xFF004CFF), size: 16),
             ],
           ),
           const SizedBox(height: 8),
@@ -542,35 +541,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
             crossAxisSpacing: 8,
             mainAxisSpacing: 8,
             childAspectRatio: 155 / 171,
-            children:
-                items.map((img) {
-                  return GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, '/product'),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.asset(
-                            img,
-                            width: double.infinity,
-                            height: 130,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          "Lorem ipsum dolor sit amet",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                        const Text(
-                          "\$17,00",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ],
+            children: items.map((img) {
+              return GestureDetector(
+                onTap: () => Navigator.pushNamed(context, '/product'),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        img,
+                        width: double.infinity,
+                        height: 130,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  );
-                }).toList(),
+                    const SizedBox(height: 4),
+                    const Text(
+                      "Lorem ipsum dolor sit amet",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    const Text(
+                      "\$17,00",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
           ),
         ],
       ),
@@ -590,7 +588,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Container(
             padding: const EdgeInsets.all(4),
             decoration: const BoxDecoration(
-              color: Colors.blue,
+              color: Color(0xFF004CFF),
               shape: BoxShape.circle,
             ),
             child: const Icon(
@@ -624,7 +622,7 @@ class _StatusButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: isActive ? Colors.blue : Colors.grey[200],
+          color: isActive ? Color(0xFF004CFF) : Colors.grey[200],
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(

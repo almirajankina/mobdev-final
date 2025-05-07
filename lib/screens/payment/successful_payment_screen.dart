@@ -20,7 +20,7 @@ class SuccessfulPaymentScreen extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: 30,
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xFF004CFF),
                 child: Icon(Icons.check, color: Colors.white, size: 30),
               ),
               const SizedBox(height: 24),
@@ -46,7 +46,8 @@ class SuccessfulPaymentScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.shade300,
                   foregroundColor: Colors.black,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                 ),
                 onPressed: () {
                   Navigator.popUntil(context, (route) => route.isFirst);

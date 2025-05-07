@@ -127,7 +127,8 @@ class _SearchScreenState extends State<SearchScreen> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
-            const Icon(Icons.camera_alt_outlined, size: 26, color: Colors.blue),
+            const Icon(Icons.camera_alt_outlined,
+                size: 26, color: Color(0xFF004CFF)),
           ],
         ),
         const SizedBox(height: 16),
@@ -294,8 +295,8 @@ class _SearchScreenState extends State<SearchScreen> {
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.blue,
+      selectedItemColor: Color(0xFF004CFF),
+      unselectedItemColor: Color(0xFF004CFF),
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),

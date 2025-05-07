@@ -45,7 +45,8 @@ class ShopClothingScreen extends StatelessWidget {
                   },
                   child: const Text("Clothing ×",
                       style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold)),
+                          color: Color(0xFF004CFF),
+                          fontWeight: FontWeight.bold)),
                 ),
                 const Spacer(),
                 GestureDetector(
@@ -175,8 +176,8 @@ class ShopClothingScreen extends StatelessWidget {
 
   Widget _buildBottomNavBar() {
     return BottomNavigationBar(
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.blue,
+      selectedItemColor: Color(0xFF004CFF),
+      unselectedItemColor: Color(0xFF004CFF),
       type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
