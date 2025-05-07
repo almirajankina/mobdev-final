@@ -20,11 +20,11 @@ class ProductFullScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF004CFF),
         elevation: 0,
         leading: const BackButton(color: Colors.black),
         title: const Text("Product Details",
-            style: TextStyle(color: Colors.black)),
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
         centerTitle: true,
       ),
       body: Stack(
@@ -57,7 +57,7 @@ class ProductFullScreen extends StatelessWidget {
           product['image'],
           width: double.infinity,
           height: 300,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
         Positioned(
           top: 40,
@@ -122,9 +122,12 @@ class ProductFullScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Row(
             children: [
-              const Chip(label: Text("S")),
+              const Chip(
+                label: Text("S"),
+                backgroundColor: Colors.white,
+              ),
               const SizedBox(width: 8),
-              const Chip(label: Text("M")),
+              const Chip(label: Text("M"), backgroundColor: Colors.white),
               const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(context, '/productVariations'),
@@ -136,26 +139,6 @@ class ProductFullScreen extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: 90,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: variations.length,
-              separatorBuilder: (_, __) => const SizedBox(width: 8),
-              itemBuilder: (context, index) {
-                return ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    variations[index],
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                );
-              },
-            ),
           ),
         ],
       ),
